@@ -13,6 +13,11 @@ const notificationAxios = axios.create({
   }
 })
 
+// get message body for given dapp name
+function getMessageBody(dappName) {
+  return `New call request from ${dappName}`
+}
+
 //
 // Router
 //

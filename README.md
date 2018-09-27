@@ -14,6 +14,8 @@ $ npm install
 
 ```bash
 # create config.env and change it
+# add FCM_API_KEY=<FCM_API_KEY> into config.env
+
 $ npm run dev
 ```
 
@@ -21,6 +23,8 @@ $ npm run dev
 
 ```bash
 # create config-production.env and change it
+# add FCM_API_KEY=<FCM_API_KEY> into config-production.env
+
 $ npm run build
 $ npm start
 ```
