@@ -78,7 +78,7 @@ notificationRouter.post('/new', async(req, res) => {
 // Main router
 //
 
-// add transaction status router to main Router
+// add call status router to main Router
 router.use('/notification', notificationRouter)
 
 // main router
