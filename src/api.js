@@ -31,17 +31,17 @@ const router = Router()
 
 const notificationRouter = Router({ mergeParams: true })
 notificationRouter.post('/new', async(req, res) => {
-  const { pushType, pushToken, sessionId, transactionId, dappName } = req.body
-  if (!pushType || !pushToken || !sessionId || !transactionId || !dappName) {
+  const { pushType, pushToken, sessionId, callId, dappName } = req.body
+  if (!pushType || !pushToken || !sessionId || !callId || !dappName) {
     return res.status(412).json({
-      message: 'fcmToken, sessionId, transactionId and dappName required'
+      message: 'fcmToken, sessionId, callId and dappName required'
     })
   }
   if (pushType.toLowerCase() === 'fcm') {
     // fcm payload
     const fcmPayload = {
       to: pushToken,
-      data: { sessionId, transactionId, dappName },
+      data: { sessionId, callId, dappName },
       notification: {
         body: getMessageBody(dappName)
       }
