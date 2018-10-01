@@ -31,41 +31,47 @@ const router = Router()
 
 const notificationRouter = Router({ mergeParams: true })
 notificationRouter.post('/new', async(req, res) => {
-  const { fcmToken, sessionId, transactionId, dappName } = req.body
-  if (!fcmToken || !sessionId || !transactionId || !dappName) {
+  const { pushType, pushToken, sessionId, transactionId, dappName } = req.body
+  if (!pushType || !pushToken || !sessionId || !transactionId || !dappName) {
     return res.status(412).json({
       message: 'fcmToken, sessionId, transactionId and dappName required'
     })
   }
-  // fcm payload
-  const fcmPayload = {
-    to: fcmToken,
-    data: { sessionId, transactionId, dappName },
-    notification: {
-      body: getMessageBody(dappName)
+  if (pushType.toLowerCase() === 'fcm') {
+    // fcm payload
+    const fcmPayload = {
+      to: pushToken,
+      data: { sessionId, transactionId, dappName },
+      notification: {
+        body: getMessageBody(dappName)
+      }
     }
-  }
 
-  try {
-    const response = await notificationAxios.post('', fcmPayload)
-    // check status
-    if (
-      response.status === 200 &&
-      response.data &&
-      response.data.success === 1
-    ) {
-      return res.json({
-        success: true
+    try {
+      const response = await notificationAxios.post('', fcmPayload)
+      // check status
+      if (
+        response.status === 200 &&
+        response.data &&
+        response.data.success === 1
+      ) {
+        return res.json({
+          success: true
+        })
+      }
+    } catch (e) {
+      return res.status(400).json({
+        message: 'Error while sending notification'
       })
     }
-  } catch (e) {
     return res.status(400).json({
-      message: 'Error while sending notification'
+      message: 'FCM server error, push notification failed'
+    })
+  } else {
+    return res.status(400).json({
+      message: `Push type ${pushType} is not suported`
     })
   }
-  return res.status(400).json({
-    message: 'FCM server error, push notification failed'
-  })
 })
 
 //
