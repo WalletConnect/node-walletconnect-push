@@ -1,6 +1,6 @@
 {
   "name": "node-walletconnect-push",
-  "version": "0.7.0",
+  "version": "0.7.11",
   "description": "Push server for walletconnect standard",
   "private": true,
   "scripts": {
