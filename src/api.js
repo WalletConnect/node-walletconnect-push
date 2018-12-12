@@ -14,8 +14,8 @@ const notificationAxios = axios.create({
 })
 
 // get message body for given dapp name
-function getMessageBody(dappName) {
-  return `New request from ${dappName}`
+function getMessageBody() {
+  return `New Request`
 }
 
 //
@@ -31,8 +31,8 @@ const router = Router()
 
 const notificationRouter = Router({ mergeParams: true })
 notificationRouter.post('/new', async(req, res) => {
-  const { pushType, pushToken, sessionId, callId, dappName } = req.body
-  if (!pushType || !pushToken || !sessionId || !callId || !dappName) {
+  const { pushType, pushToken, sessionId, callId } = req.body
+  if (!pushType || !pushToken || !sessionId || !callId) {
     return res.status(412).json({
       message: 'fcmToken, sessionId, callId and dappName required'
     })
@@ -41,9 +41,9 @@ notificationRouter.post('/new', async(req, res) => {
     // fcm payload
     const fcmPayload = {
       to: pushToken,
-      data: { sessionId, callId, dappName },
+      data: { sessionId, callId },
       notification: {
-        body: getMessageBody(dappName)
+        body: getMessageBody()
       }
     }
 
