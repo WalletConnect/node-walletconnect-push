@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/walletconnect/walletconnect-push.git"
+    "url": "git+https://github.com/walletconnect/node-walletconnect-push.git"
   },
   "bugs": {
-    "url": "https://github.com/walletconnect/walletconnect-push/issues"
+    "url": "https://github.com/walletconnect/node-walletconnect-push/issues"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
