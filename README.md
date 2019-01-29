@@ -1,30 +1,25 @@
-# WalletConnect push server
+# WalletConnect Push Server
 
-Push server for [walletconnect](https://walletconnect.org) standard.
-
-### Setup
+## Develop
 
 ```bash
-$ git clone git@github.com:walletconnect/node-walletconnect-push.git
-$ cd node-walletconnect-push
-$ npm install
+yarn dev
 ```
 
-### Development
+## Test
 
 ```bash
-# create config.env and change it
-# add FCM_API_KEY=<FCM_API_KEY> into config.env
-
-$ npm run dev
+yarn test
 ```
 
-### Production
+## Build
 
 ```bash
-# create config-production.env and change it
-# add FCM_API_KEY=<FCM_API_KEY> into config-production.env
+yarn build
+```
 
-$ npm run build
-$ npm start
+## Run
+
+```bash
+yarn start
 ```
