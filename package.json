@@ -25,6 +25,7 @@
   "scripts": {
     "dev": "babel-node --extensions '.ts' src/index.ts",
     "build": "babel ./src --extensions '.ts' --out-dir ./build",
+    "build:docker": "yarn build && docker build -t walletconnect/node-walletconnect-push .",
     "test": "mocha --require ./babel-polyfill.js test/**/*.spec.ts",
     "start": "node ./build"
   },
