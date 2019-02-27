@@ -20,6 +20,11 @@ const app = fastify({ logger: config.debug })
 
 app.register(helmet)
 
+// for container health checks
+app.get('/health', (_, res) => {
+  res.status(204).send()
+})
+
 app.post('/new', async (req, res) => {
   const { bridge, topic, type, token, peerName, language } = req.body
 
