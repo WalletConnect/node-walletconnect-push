@@ -12,6 +12,10 @@ RUN apk add --no-cache $PACKAGES && \
 
 COPY . .
 
+# Run as non-root user for security
+USER 1000
+
+# Expose app port (5000/tcp)
 EXPOSE 5000
 
 CMD [ "yarn", "start" ]
