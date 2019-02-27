@@ -1,7 +1,7 @@
 FROM node:11-alpine
 
 # minimal apk dependencies to be safe
-ENV NODE_ENV=production PACKAGES="curl ca-certificates"
+ENV PACKAGES="curl ca-certificates" NODE_ENV="production" HOST="0.0.0.0:5000"
 
 WORKDIR /usr/src/app
 

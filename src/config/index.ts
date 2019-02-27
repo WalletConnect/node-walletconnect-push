@@ -12,7 +12,7 @@ const configFile = `${root}${fileName}`
 const env = process.env.NODE_ENV || 'development'
 const debug = env !== 'production'
 const port = process.env.PORT || env === 'production' ? 5000 : 5002
-const host = process.env.HOST || `localhost:${port}`
+const host = process.env.HOST || `0.0.0.0:${port}`
 
 dotenv.config({ path: configFile, debug: debug })
 
