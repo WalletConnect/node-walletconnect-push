@@ -140,8 +140,7 @@ app.post('/push', async (req, res) => {
   }
 })
 
-const [host, port] = config.host.split(':')
-app.listen(+port, host, (err, address) => {
+app.listen(config.port, '0.0.0.0', (err, address) => {
   if (err) throw err
   console.log(`Server listening on ${address}`)
   app.log.info(`Server listening on ${address}`)
