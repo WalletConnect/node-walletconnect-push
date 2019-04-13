@@ -17,9 +17,9 @@ export function getHashValue (
         reject(error)
       }
       if (result) {
-        return JSON.parse(result)
+        resolve (JSON.parse(result))
       }
-      return null
+      reject(null)
     })
   })
 }
@@ -35,7 +35,7 @@ export function setHashValue (
       if (error) {
         reject(error)
       }
-      return result
+      resolve(true)
     })
   })
 }
