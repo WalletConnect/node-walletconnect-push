@@ -14,12 +14,14 @@ export function getHashValue (
   return new Promise((resolve, reject) => {
     redisClient.hget(key, field, (error, result) => {
       if (error) {
-        reject(error)
+        return reject(error)
       }
+
       if (result) {
-        return JSON.parse(result)
+        return resolve(JSON.parse(result))
       }
-      return null
+
+      resolve(null)
     })
   })
 }
@@ -33,9 +35,9 @@ export function setHashValue (
   return new Promise((resolve, reject) => {
     redisClient.hset(key, field, value, (error, result) => {
       if (error) {
-        reject(error)
+        return reject(error)
       }
-      return result
+      resolve(true)
     })
   })
 }
