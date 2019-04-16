@@ -108,6 +108,7 @@ app.post('/push', async (req, res) => {
 
       const notification = {
         to: token,
+        data: { topic },
         notification: {
           body: body
         }
