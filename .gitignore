@@ -44,3 +44,6 @@ dist
 build
 
 .DS_Store
+
+# Ignore .env files
+*.env
