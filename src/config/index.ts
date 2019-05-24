@@ -16,7 +16,7 @@ const debug = env !== 'production'
 dotenv.config({ path: configFile, debug: debug })
 
 // retrieve port from env or use default
-const port = process.env.PORT || env === 'production' ? 5000 : 5002
+const port = process.env.PORT || (env === 'production' ? 5000 : 5002)
 
 export default {
   env: env,
