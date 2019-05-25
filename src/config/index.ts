@@ -11,9 +11,12 @@ const fileName =
 const configFile = `${root}${fileName}`
 const env = process.env.NODE_ENV || 'development'
 const debug = env !== 'production'
-const port = process.env.PORT || env === 'production' ? 5000 : 5002
 
+// load config from env file
 dotenv.config({ path: configFile, debug: debug })
+
+// retrieve port from env or use default
+const port = process.env.PORT || (env === 'production' ? 5000 : 5002)
 
 export default {
   env: env,
