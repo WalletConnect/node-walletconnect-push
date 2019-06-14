@@ -110,7 +110,8 @@ app.post('/push', async (req, res) => {
         to: token,
         data: { topic },
         notification: {
-          body: body
+          body: body,
+          sound: 'default'
         }
       }
 
